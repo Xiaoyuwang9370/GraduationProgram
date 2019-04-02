@@ -20,38 +20,45 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <b>大学教室预约系统</b>
+            <a href="../index.html"><b>大学教室预约系统</b></a>
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">
             <p class="login-box-msg">帐户登录</p>
-            <form action="../index.html" method="post">
+            <form action="SubmitLogin.php" method="post">
                 <div class="form-group has-feedback">
-                    <input type="email" class="form-control" placeholder="账户">
-                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                    <input type="text" class="form-control" name="Name" required="required" oninput="if(value.length>10)value=value.slice(0,10)" placeholder="账户">
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
-                    <input type="password" class="form-control" placeholder="密码">
+                    <input type="password" class="form-control" name="Password" required="required" placeholder="密码">
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
                 <div class="row">
                     <div class="col-xs-8">
                         <div class="checkbox icheck">
                             <label>
-                                <input type="checkbox"> 记住我
+                                <input type="checkbox" name="Remember"> 记住我
                             </label>
                         </div>
                     </div>
                     <!-- /.col -->
                     <div class="col-xs-4">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
+                        <button type="submit" name="Submit" class="btn btn-primary btn-block btn-flat">登录</button>
                     </div>
                     <!-- /.col -->
                 </div>
             </form>
             <!-- /.social-auth-links -->
+            <?php
+                if (isset($_GET['msg']))
+                {
+                    echo '<p style="color:red;font-size:16px;" align="center">' . $_GET["msg"] . '</p>';
+                }
+            ?>
         </div>
         <!-- /.login-box-body -->
+
     </div>
     <!-- /.login-box -->
 
