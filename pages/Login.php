@@ -20,7 +20,7 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="../index.html"><b>大学教室预约系统</b></a>
+            <b>大学教室预约系统</b>
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">

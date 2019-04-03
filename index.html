@@ -22,6 +22,7 @@
     <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
     <!-- Bootstrap 3.3.6 -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="pages/Common.js"></script>
 </head>
 
 <body class="hold-transition skin-purple sidebar-mini">
@@ -48,39 +49,25 @@
                         <!-- User Account Menu -->
                         <li class="dropdown user user-menu">
                             <!-- Menu Toggle Button -->
-                            <a href="pages/Login.php" class="dropdown-toggle" data-toggle="dropdown">
-                                <span class="hidden-xs">登录</span>
-                            </a>
+                            <a href="pages/Login.php" id="LoginButton" class="dropdown-toggle"
+                                data-toggle="dropdown"></a>
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
-                                    <p>
-                                        Alexander Pierce - Web 开发人员
-                                        <small>注册于2012年11月</small>
+                                    <p class="UserName">
+                                        <small class="UserType"></small>
+                                        <small class="College"></small>
                                     </p>
                                 </li>
-                                <!-- Menu Body -->
-                                <li class="user-body">
-                                    <div class="row">
-                                        <div class="col-xs-4 text-center">
-                                            <a href="#">关注</a>
-                                        </div>
-                                        <div class="col-xs-4 text-center">
-                                            <a href="#">销售</a>
-                                        </div>
-                                        <div class="col-xs-4 text-center">
-                                            <a href="#">好友</a>
-                                        </div>
-                                    </div>
-                                    <!-- /.row -->
-                                </li>
+
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
                                         <a href="pages/UserInfo.html" class="btn btn-default btn-flat">资料</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="#" class="btn btn-default btn-flat">退出</a>
+                                        <a href="#" id="LogoutButton" class="btn btn-default btn-flat"
+                                            onclick="doLogout()">退出</a>
                                     </div>
                                 </li>
                             </ul>
@@ -100,12 +87,16 @@
                     <li class="header">前台</li>
                     <!-- Optionally, you can add icons to the links -->
                     <li class="active"><a href="index.html"><i class="fa fa-table"></i> <span>教室信息</span></a></li>
-                    <li><a href="pages/ApplyInfo.html"><i class="fa fa-edit"></i> <span>查看申请</span></a></li>
-                    <li><a href="pages/UserInfo.html"><i class="fa fa-edit"></i> <span>个人信息</span></a></li>
-                    <li class="header">后台</li>
-                    <li><a href="pages/ClassroomManage.html"><i class="fa fa-th"></i> <span>教室管理</span></a></li>
-                    <li><a href="pages/ApplyManage.html"><i class="fa fa-file"></i> <span>审批管理</span></a></li>
-                    <li class="treeview">
+                    <li class="Permission2"><a href="pages/ApplyInfo.html"><i class="fa fa-edit"></i>
+                            <span>查看申请</span></a></li>
+                    <li class="Permission3"><a href="pages/UserInfo.html"><i class="fa fa-edit"></i>
+                            <span>用户资料</span></a></li>
+                    <li class="header Permission1">后台</li>
+                    <li class="Permission1"><a href="pages/ClassroomManage.html"><i class="fa fa-th"></i>
+                            <span>教室管理</span></a></li>
+                    <li class="Permission1"><a href="pages/ApplyManage.html"><i class="fa fa-file"></i>
+                            <span>审批管理</span></a></li>
+                    <li class="treeview Permission1">
                         <a href="#"><i class="fa fa-user"></i> <span>用户管理</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
@@ -116,7 +107,7 @@
                             <li><a href="pages/EditUser.html"><i class="fa fa-edit"></i>编辑用户</a></li>
                         </ul>
                     </li>
-                    <li><a href="#"><i class="fa fa-eye"></i> <span>访问统计</span></a></li>
+                    <li class="Permission1"><a href="#"><i class="fa fa-eye"></i> <span>访问统计</span></a></li>
                 </ul>
                 <!-- /.sidebar-menu -->
             </section>
@@ -132,8 +123,7 @@
                     <small>查看各教室预约情况</small>
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-dashboard"></i> 层级</a></li>
-                    <li class="active">这里</li>
+                    <li class="active"><i class="fa fa-table"></i> 首页</li>
                 </ol>
             </section>
 
@@ -161,6 +151,13 @@
 
     <!-- AdminLTE App -->
     <script src="dist/js/app.min.js"></script>
+    <script>
+        checkUser(sUser, sUserName, sUserType, sCollege);
+        checkPermission(Number(sUserType));
+        if (sUserType > 3) {
+            location.href = "/CRSystem/pages/404.html";
+        }
+    </script>
 </body>
 
 </html>

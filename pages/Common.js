@@ -2,6 +2,11 @@ String.prototype.trim = function () {
     return this.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
 }
 
+var sUser = getCookie("CRS_User");
+var sUserName = getCookie("CRS_User_Name");
+var sUserType = getCookie("CRS_User_Type");
+var sCollege = getCookie("CRS_College");
+
 function arraySize(obj) {
     var size = 0, key;
     for (key in obj) {
@@ -18,14 +23,14 @@ function getCookie(sCookieName) {
             return sCookie.substr(sCookieName.length + 1, sCookie.length);
         }
     }
-    if (sCookieName == "VMP_User_Type") {
-        return "5";
+    if (sCookieName == "CRS_User_Type") {
+        return "4";
     }
     return null;
 }
 
 function checkPermission(nUserType) {
-    nUserType = (nUserType == 0 ? 5 : nUserType);
+    nUserType = (nUserType == 0 ? 4 : nUserType);
     for (var i = nUserType - 1; i > 0; i--) {
         $(".Permission" + i).remove();
     }
@@ -80,25 +85,42 @@ function removeClass(elementOne, cName) {
     };
 }
 
-function checkUser(sUser, sUserType) {
-    if (sUser != null && sUserType != null) {
-        var LoginButton = document.getElementById("LoginButton");
-        LoginButton.style.display = "none";
-        $("#UserName").html(sUser);
+function checkUser(sUser, sUserName, nUserType, sCollege) {
+    var sUserType = "";
+    if (nUserType == 1) {
+        sUserType = "管理员";
+    }
+    else if (nUserType == 2) {
+        sUserType = "教师";
+    }
+    else if (nUserType == 3) {
+        sUserType = "学生";
     }
     else {
-        var LogoutButton = document.getElementById("LogoutButton");
-        LogoutButton.style.display = "none";
-        var UserName = document.getElementById("UserName");
-        UserName.style.display = "none";
-        //$("#UserName").remove();
+        sUserType = "游客";
+    }
+
+    if (sUserName != null && nUserType != null) {
+        $("#LoginButton").html(sUserName);
+        $(".User").html(sUser);
+        $(".UserName").prepend(sUserName);
+        $(".UserType").html(sUserType);
+        $(".College").html(sCollege);
+    }
+    else {
+        $("#LoginButton").html("登录");
+        $("#LoginButton").attr("data-toggle", "none");
+
     }
 }
+
 function doLogout() {
     if (window.confirm("是否注销登录用户" + sUser)) {
-        setCookie("VMP_User", "", -1);
-        setCookie("VMP_User_Type", "", -1);
-        location.reload();
+        setCookie("CRS_User", "", -1);
+        setCookie("CRS_User_Name", "", -1);
+        setCookie("CRS_User_Type", "", -1);
+        setCookie("CRS_College", "", -1);
+        location.href = "/CRSystem/Pages/Login.php";
     }
 }
 

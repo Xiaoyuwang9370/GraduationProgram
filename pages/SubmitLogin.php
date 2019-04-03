@@ -42,12 +42,16 @@ function login()
             if (isset($_POST['Remember']) && $_POST['Remember'] == 'on')
             {
                 echo "setCookie(\"CRS_User\", \"${sName}\", 14);" . PHP_EOL;
+                echo "setCookie(\"CRS_User_Name\", \"" . $oUser['User_Name'] . "\", 14);" . PHP_EOL;
                 echo "setCookie(\"CRS_User_Type\", \"" . $oUser['Type_ID'] . "\", 14);" . PHP_EOL;
+                echo "setCookie(\"CRS_College\", \"" . $oUser['College'] . "\", 14);" . PHP_EOL;
             }
             else
             {
                 echo "setCookie(\"CRS_User\", \"${sName}\", 0);" . PHP_EOL;
+                echo "setCookie(\"CRS_User_Name\", \"" . $oUser['User_Name'] . "\", 0);" . PHP_EOL;
                 echo "setCookie(\"CRS_User_Type\", \"" . $oUser['Type_ID'] . "\", 0);" . PHP_EOL;
+                echo "setCookie(\"CRS_College\", \"" . $oUser['College'] . "\", 0);" . PHP_EOL;
             }
             echo "window.location.href='../index.html'";
         }

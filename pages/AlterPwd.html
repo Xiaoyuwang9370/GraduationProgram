@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>大学教室预约系统 | 添加用户</title>
+    <title>大学教室预约系统 | 用户资料</title>
     <!-- 告诉浏览器该页面是自适应布局 -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -38,87 +38,66 @@
             <!-- Content Header (页眉) -->
             <section class="content-header">
                 <h1>
-                    添加用户
-                    <small>单个或批量导入用户信息</small>
+                    修改密码
+                    <small></small>
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="../index.html"><i class="fa fa-table"></i> 首页</a></li>
-                    <li class="active">添加用户</li>
+                    <li class="active">修改密码</li>
                 </ol>
             </section>
 
             <!-- Main content -->
             <section class="content">
-                <!-- 单个导入box -->
+                <div class="col-md-3" style="color:red;">
+                    <p>登录密码修改规则说明:</p>
+                    <p>1.密码长度为6~16位，至少包含数字、字母、特殊符号中的两类，字母区分大小写</p>
+                    <p>2.密码不可与账号相同</p>
+                    <p>3.密码不可以与身份证号后几位相同</p>
+                </div>
                 <div class="col-md-6">
                     <div class="box box-info">
                         <div class="box-header with-border">
-                            <h3 class="box-title">单个导入</h3>
+                            <h3 class="box-title UserName"></h3>
                         </div>
-                        <form action="SubmitUserInfo.php" method="POST">
+                        <!-- <h3 class="profile-username text-center UserName"></h3> -->
+                        <form action="AlterPwd.php" method="post" onsubmit="return alter()">
                             <div class="box-body">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="number" name="Name" class="form-control" required="required"
-                                        oninput="if(value.length>10)value=value.slice(0,10)" placeholder="用户名">
+                                    <span class="input-group-addon">账号</span>
+                                    <input type="text" id="Name" name="Name" class="form-control" required="required">
+                                </div>
+                                <br>
+                                
+                                <div class="input-group">
+                                    <span class="input-group-addon">请输入原密码</span>
+                                    <input type="password" id="OldPwd" name="OldPassword" class="form-control" required="required"
+                                    oninput="if(value.length>16)value=value.slice(0,16)">
                                 </div>
                                 <br>
 
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                                    <input type="text" name="UserName" class="form-control" required="required"
-                                        maxlength="10" placeholder="姓名">
+                                    <span class="input-group-addon">请输入新密码</span>
+                                    <input type="password" id="NewPwd" name="NewPassword" class="form-control" required="required"
+                                    oninput="if(value.length>16)value=value.slice(0,16)">
                                 </div>
                                 <br>
 
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-address-card"></i></span>
-                                    <input type="text" name="Type" class="form-control" required="required"
-                                        maxlength="3" placeholder="管理员、教师、或学生">
-                                </div>
-                                <br>
-
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-graduation-cap"></i></span>
-                                    <input type="text" name="College" class="form-control" required="required"
-                                        maxlength="16" placeholder="学院">
+                                    <span class="input-group-addon">请确认新密码</span>
+                                    <input type="password" id="Check" name="Check" class="form-control" required="required"
+                                    oninput="if(value.length>16)value=value.slice(0,16)">
                                 </div>
                                 <!-- /input-group -->
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
-                                <button type="submit" name="Submit" class="btn btn-primary">提交</button>
+                                <button type="submit" id="Submit" name="Submit" class="btn btn-primary" onclick="return alter()">提交</button>
                             </div>
                         </form>
                     </div>
                 </div>
-                <!-- /.box -->
-
-                <!-- 批量导入box -->
-                <div class="col-md-6">
-                    <div class="box box-info">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">批量导入</h3>
-                        </div>
-                        <form action="SubmitUserInfo.php" method="POST">
-                            <div class="box-body">
-                                <div class="form-group">
-
-                                    <input type="file" name="InputFile" id="InputFile">
-
-                                    <p class="help-block">用excel表格批量导入，表格标题为用户、姓名、身份、院系</p>
-                                </div>
-                                <!-- /input-group -->
-                            </div>
-                            <!-- /.box-body -->
-                            <div class="box-footer">
-                                <button type="submit" name="Submit" class="btn btn-primary">提交</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <!-- /.box -->
-
+                <div class="col-md-3"></div>
             </section>
             <!-- /.content -->
         </div>
@@ -134,11 +113,7 @@
 
     <!-- AdminLTE App -->
     <script src="../dist/js/app.min.js"></script>
-    <script>
-        if (sUserType > 1) {
-            location.href = "/CRSystem/pages/404.html";
-        }
-    </script>
+    <script src="AlterPwd.js"></script>
 </body>
 
 </html>
