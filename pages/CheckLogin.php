@@ -4,8 +4,9 @@
         $nUserType = (int)$sUserType;
         if ($nUserType == 0)
         {
-            $nUserType = 5;
+            $nUserType = 4;
         }
+        
         if ($nUserType > $nLimitType)
         {
             echo "<script>alert(\"${sTips}\")</script>";

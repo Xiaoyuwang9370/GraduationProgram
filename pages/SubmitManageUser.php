@@ -12,7 +12,7 @@ function manageUser()
 {
     $VMPDB = connectDB("localhost", "root", "123", "crsdatabase", "utf8");
     
-    $oUsers = $VMPDB->query("SELECT * From User");
+    $oUsers = $VMPDB->query("SELECT user.User_ID,user.Name,user.User_Name,user_type.Type_ID,user.College FROM user,user_type WHERE user.Type=user_type.Name");
     while ($oUser = $oUsers->fetch_assoc())
     {
         $sName = $oUser['Name'];
@@ -22,11 +22,12 @@ function manageUser()
             $VMPDB->query("DELETE FROM User WHERE Name='{$sName}'");
             continue;
         }
+
         $sTypeId = "Type_" . $sName;
-        if (isset($_POST[$sTypeId]) && $_POST[$sTypeId] != $oUser['Type'])
+        if (isset($_POST[$sTypeId]) && $_POST[$sTypeId] != $oUser['Type_ID'])
         {
             $nUserType = $_POST[$sTypeId];
-            $VMPDB->query("UPDATE User SET Type={$nUserType} WHERE Name='{$sName}'");
+            $VMPDB->query("UPDATE User,user_type SET user.Type=user_type.Name WHERE user.Name='{$sName}' AND user_type.Type_ID='{$nUserType}'");
         }
     }
     echo "<script>window.alert('修改完成');</script>";

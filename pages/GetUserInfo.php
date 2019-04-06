@@ -2,7 +2,7 @@
 <?php
 function getUserName($VMPDB_Name)
 {
-	$oResult = $VMPDB_Name->query("SELECT * FROM user");
+	$oResult = $VMPDB_Name->query("SELECT user.User_ID,user.Name,user.User_Name,user_type.Type_ID,user.College FROM user,user_type WHERE user.Type=user_type.Name");
 
     $sUserName = array();
     while ($oRow = $oResult->fetch_assoc())
@@ -26,15 +26,16 @@ function getUserInfo()
 }
 
 function getUserTypeList($VMPDB)
+{
+    $oResult = $VMPDB->query("SELECT * FROM User_Type");
+    $sUserTypeList = array();
+    while ($oRow = $oResult->fetch_assoc())
     {
-        $oResult = $VMPDB->query("SELECT * FROM Type order by type asc");
-        $sUserTypeList = array();
-        while ($oRow = $oResult->fetch_assoc())
-        {
-            $sUserTypeList[] = $oRow;
-        }
-        return $sUserTypeList;
+        $sUserTypeList[] = $oRow;
     }
+    return $sUserTypeList;
+}
+
 function getUserTypeInfo()
 {
 	// 创建连接
