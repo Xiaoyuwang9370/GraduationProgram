@@ -1,0 +1,14 @@
+/*表格样式*/
+tr{
+	background-color: #EEEEEE;
+}
+tr th,td{
+	text-align: center;
+}
+
+/*表格字体大小*/
+table tr,select option{font-size: 16px;}
+
+#buttonGroup{
+    margin-bottom: 10px;
+}

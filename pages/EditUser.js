@@ -1,3 +1,16 @@
+if (sUserType > 1) {
+	location.href = "/CRSystem/pages/404.html";
+}
+
+//修改确认
+function confirmChanged() {
+	if (confirm("确定要修改吗？")) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 function generateTbody(data) {
 	var oUserType = data.Types;
 	var oUserInfo = data.Users;
@@ -52,13 +65,4 @@ function GetUserInfo() {
 }
 
 GetUserInfo();
-
-//修改确认
-function confirmChanged() {
-	if (confirm("确定要修改吗？")) {
-		return true;
-	} else {
-		return false;
-	}
-}
 

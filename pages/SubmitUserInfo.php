@@ -19,6 +19,7 @@ function register()
 
     $sSql = "INSERT INTO User (Name, User_Name, Type, College, Password) 
              VALUES ('{$sName}', '{$sUserName}','{$sType}' ,'{$sCollege}', '{$sPassword}')";
+
     $bInsertDone = $VMPDB->query($sSql);
     
     if ($bInsertDone)
