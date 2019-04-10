@@ -30,10 +30,11 @@ function generateTbody(oClassroomList) {
     let nCount = 0;
     for (let i = 0; i < oClassroomList.length; i++) {
         let sClassroom = oClassroomList[i].Classroom;
+        let nClassroomID = oClassroomList[i].Classroom_ID;
         nCount += 1;
         let sNumberTd = "<td>" + nCount + "</td>";
         let sClassroomTd = "<td>" + sClassroom + "</td>";
-        let sViewTd = "<td><button class=\"btn btn-xs btn-primary\">查看</button></td>";
+        let sViewTd = "<td><button class=\"btn btn-xs btn-primary\" onclick=\"window.location.href='../index.html?ClassroomID=" + nClassroomID + "'\">查看</button></td>";
         let sDelTd = "<td><button name='" + sClassroom + "' class=\"btn btn-xs btn-danger delBtn\">删除</button></td>";
         let sTr = "<tr value='" + sClassroom + "'>" + sNumberTd + sClassroomTd + sViewTd + sDelTd +"</tr>";
         $("#tbody").append(sTr);
@@ -48,7 +49,7 @@ function generateTbody(oClassroomList) {
 function getClassroomData() {
     $.ajax({
         type: "post",
-        url: "GetClassroomData.php",
+        url: "GetClassroomList.php",
         dataType: "json",
         success: function (result) {
             generateTbody(result);

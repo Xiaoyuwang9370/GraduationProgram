@@ -75,3 +75,15 @@ function doLogout() {
         location.href = "/CRSystem/Pages/Login.php";
     }
 }
+
+function getUrlParam(sName)
+{
+    var sUrl = window.location.href;
+    var oRegexp = new RegExp("[\\?|\\&]" + sName + "\\=([^\\&]+)");
+    var sMatch = sUrl.match(oRegexp);
+    if (sMatch)
+    {
+        return sMatch[1];
+    }
+    return;
+}

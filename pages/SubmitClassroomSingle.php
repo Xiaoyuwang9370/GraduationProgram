@@ -14,10 +14,10 @@ function submitClassroom($sClassroom)
     $sSqlUpdateFlag = "UPDATE classroom_id,classroom_data SET Classroom_ID.Delete_Flag=0,classroom_data.Delete_Flag=0 WHERE classroom_id.Classroom='{$sClassroom}' AND classroom_data.Classroom_ID=classroom_id.Classroom_ID";
 
     $bInsertDone = $VMPDB->query($sSql);
-    $bInsertDataDone = $VMPDB->query($sSqlData);
 
     if ($bInsertDone)
     {
+        $bInsertDataDone = $VMPDB->query($sSqlData);
         echo "<script>alert(\"导入成功\")</script>";
         echo "<script>window.location.href = \"ClassroomManage.html\" </script>";
     }

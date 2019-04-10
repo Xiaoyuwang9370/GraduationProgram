@@ -54,7 +54,6 @@ function GetUserInfo() {
 			generateTbody(data);
 		},
 		error: function (data) {
-			// alert("GetUser err");
 			console.log(data);
 		}
 	});

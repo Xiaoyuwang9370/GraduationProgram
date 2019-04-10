@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
     <!-- Skin style -->
     <link rel="stylesheet" href="dist/css/skins/skin-purple.min.css">
+    <link rel="stylesheet" href="dist/css/index.css">
     <!-- jQuery 2.2.3 -->
     <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
     <!-- Bootstrap 3.3.6 -->
@@ -130,20 +131,43 @@
             <!-- Main content -->
             <section class="content">
                 <!-- 教室选择 -->
-                <div class="btn-group">
-                    <button type="button" class="btn btn-info">Action</button>
-                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        <span class="caret"></span>
-                        <span class="sr-only">切换下拉菜单</span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">操作</a></li>
-                        <li><a href="#">另一个操作</a></li>
-                        <li><a href="#">其他操作</a></li>
-                        <li><a href="#">分隔链接</a></li>
-                    </ul>
-                </div>
+                <select id="classroomList"></select>
                 <!-- /.教室选择 -->
+
+                <!-- 教室信息 -->
+                <div class="box box-success">
+                    <div class="box-header with-border text-center">
+                        <h3 class="box-title classroom"></h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table id="table1" class="text-center table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>日期</th>
+                                    <th>星期</th>
+                                    <th>1-2节</th>
+                                    <th>3-4节</th>
+                                    <th>5-6节</th>
+                                    <th>7-8节</th>
+                                    <th>晚自习</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody"></tbody>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer clearfix">
+                        <ul class="pagination pagination-sm no-margin pull-right">
+                            <li><a href="#">«</a></li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">»</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /.教室信息 -->
 
             </section>
             <!-- /.content -->
@@ -157,20 +181,15 @@
                 大学教室预约系统
             </div>
             <!-- Default to the left -->
-            <strong>Copyright &copy; 2019 <a href="https://blog.csdn.net/weixin_42454721" target="_blank">王肖宇</a>.</strong> All rights reserved.
+            <strong>Copyright &copy; 2019 <a href="https://blog.csdn.net/weixin_42454721"
+                    target="_blank">王肖宇</a>.</strong> All rights reserved.
         </footer>
     </div>
     <!-- ./wrapper -->
 
     <!-- AdminLTE App -->
     <script src="dist/js/app.min.js"></script>
-    <script>
-        checkUser(sUser, sUserName, sUserType, sCollege);
-        checkPermission(Number(sUserType));
-        if (sUserType > 3) {
-            location.href = "/CRSystem/pages/Login.php";
-        }
-    </script>
+    <script src="pages/index.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,22 @@
+#classroomList{
+    margin-bottom: 1%;
+}
+
+#table1 tbody tr td{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.status a{
+    color: #000000;
+    font-size: 18px;
+}
+
+.status a:hover{
+    color: red;
+}
+
+.status span{
+    font-size: 14px;
+    font-weight: bold;
+}
