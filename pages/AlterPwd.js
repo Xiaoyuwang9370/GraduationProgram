@@ -1,4 +1,4 @@
-if (sUserType > 2) {
+if (sUserType > 3) {
     location.href = "/CRSystem/pages/404.html";
 }
 

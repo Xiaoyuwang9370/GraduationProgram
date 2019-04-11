@@ -50,11 +50,11 @@ function generateTbody(oClassroomList, oClassroomInfo, sSelectedClassroomID, sSe
         sWeek = getDayName(d.getDay());
         let sDateTd = "<td value=" + sDate + ">" + sDate + "</td>";
         let sWeekTd = "<td>" + sWeek + "</td>";
-        let sStatus1_2= "预约";
-        let sStatus3_4 = "预约";
-        let sStatus5_6 = "预约";
-        let sStatus7_8 = "预约";
-        let sStatus_Night = "预约";
+        let sStatus1_2= "<a href='pages/ApplyClassroom.html?ApplyInfo=" + sSelectedClassroom + "," + sDate + "," + "1_2" + "'>预约</a>";
+        let sStatus3_4 = "<a href='pages/ApplyClassroom.html?ApplyInfo=" + sSelectedClassroom + "," + sDate + "," + "3_4" + "'>预约</a>";
+        let sStatus5_6 = "<a href='pages/ApplyClassroom.html?ApplyInfo=" + sSelectedClassroom + "," + sDate + "," + "5_6" + "'>预约</a>";
+        let sStatus7_8 = "<a href='pages/ApplyClassroom.html?ApplyInfo=" + sSelectedClassroom + "," + sDate + "," + "7_8" + "'>预约</a>";
+        let sStatus_Night = "<a href='pages/ApplyClassroom.html?ApplyInfo=" + sSelectedClassroom + "," + sDate + "," + "night" + "'>预约</a>";
 
         if (nStatusID == 1) {
             for (let j = 0; j < oClassroomInfo.length; j++) {
@@ -96,11 +96,11 @@ function generateTbody(oClassroomList, oClassroomInfo, sSelectedClassroomID, sSe
             }
         }
         
-        let sStatusTd_1 = "<td class='status' id='" + sDate + "_1-2'><a href='pages/ApplyClassroom.html?ApplyInfo=" + sSelectedClassroom + "," + sDate + "," + "1_2" + "'>" + sStatus1_2 + "</a></td>";
-        let sStatusTd_2 = "<td class='status' id='" + sDate + "_3-4'><a href='pages/ApplyClassroom.html?ApplyInfo=" + sSelectedClassroom + "," + sDate + "," + "3_4" + "'>" + sStatus3_4 + "</a></td>";
-        let sStatusTd_3 = "<td class='status' id='" + sDate + "_5-6'><a href='pages/ApplyClassroom.html?ApplyInfo=" + sSelectedClassroom + "," + sDate + "," + "5_6" + "'>" + sStatus5_6 + "</a></td>";
-        let sStatusTd_4 = "<td class='status' id='" + sDate + "_7-8'><a href='pages/ApplyClassroom.html?ApplyInfo=" + sSelectedClassroom + "," + sDate + "," + "7_8" + "'>" + sStatus7_8 + "</a></td>";
-        let sStatusTd_5 = "<td class='status' id='" + sDate + "_night'><a href='pages/ApplyClassroom.html?ApplyInfo=" + sSelectedClassroom + "," + sDate + "," + "night" + "'>" + sStatus_Night + "</a></td>";
+        let sStatusTd_1 = "<td class='status' id='" + sDate + "_1-2'>" + sStatus1_2 + "</td>";
+        let sStatusTd_2 = "<td class='status' id='" + sDate + "_3-4'>" + sStatus3_4 + "</td>";
+        let sStatusTd_3 = "<td class='status' id='" + sDate + "_5-6'>" + sStatus5_6 + "</td>";
+        let sStatusTd_4 = "<td class='status' id='" + sDate + "_7-8'>" + sStatus7_8 + "</td>";
+        let sStatusTd_5 = "<td class='status' id='" + sDate + "_night'>" + sStatus_Night + "</td>";
         let sTr = "<tr>" + sDateTd + sWeekTd + sStatusTd_1 + sStatusTd_2 + sStatusTd_3 + sStatusTd_4 + sStatusTd_5 + "</tr>";
         $("#tbody").append(sTr);
     }
