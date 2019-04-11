@@ -55,39 +55,68 @@
                         <div class="box-header with-border">
                             <h3 class="box-title">预约信息</h3>
                         </div>
-                        <div class="text-center"><strong>当前预约教室：<span class="classroom"></span></strong></div>
-                        <div class="text-center"><strong>预约时间：<span class="applyTime"></span></strong></div>
-
                         <form action="ApplyClassroom.php" method="POST">
                             <div class="box-body">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-graduation-cap"></i></span>
-                                    <input type="text" name="College" class="form-control" required="required" maxlength="16" placeholder="院系">
+                                    <span class="input-group-addon">教室</span>
+                                    <input id="classroom" type="text" name="Classroom" readonly="readonly"
+                                        class="form-control" required="required" maxlength="16" placeholder="教室">
                                 </div>
                                 <br>
 
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                                    <input type="text" name="Subject" class="form-control" required="required" maxlength="16" placeholder="课题">
+                                    <span class="input-group-addon">日期</span>
+                                    <input id="date" type="text" name="Date" readonly="readonly" class="form-control"
+                                        required="required" maxlength="16" placeholder="日期">
                                 </div>
                                 <br>
 
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="text" name="Name" class="form-control" required="required" maxlength="10" placeholder="主讲人">
+                                    <span class="input-group-addon">节次</span>
+                                    <input id="lesson" type="text" name="Lesson" readonly="readonly"
+                                        class="form-control" required="required" maxlength="16" placeholder="节次">
+                                </div>
+                                <br>
+
+                                <div class="input-group">
+                                    <span class="input-group-addon">申请人</i></span>
+                                    <input id="applyName" type="text" name="ApplyName" readonly="readonly"
+                                        class="form-control" required="required" maxlength="10" placeholder="申请人">
+                                </div>
+                                <br>
+
+                                <div class="input-group">
+                                    <span class="input-group-addon">院系</span>
+                                    <input type="text" name="College" class="form-control" required="required"
+                                        maxlength="16" placeholder="院系">
+                                </div>
+                                <br>
+
+                                <div class="input-group">
+                                    <span class="input-group-addon">课题</span>
+                                    <input type="text" name="Subject" class="form-control" required="required"
+                                        maxlength="16" placeholder="课题">
+                                </div>
+                                <br>
+
+                                <div class="input-group">
+                                    <span class="input-group-addon">主讲人</i></span>
+                                    <input type="text" name="Name" class="form-control" required="required"
+                                        maxlength="10" placeholder="主讲人">
                                 </div>
                                 <!-- /input-group -->
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
                                 <button type="submit" name="Submit" class="btn btn-primary">提交</button>
+                                <a type="button" class="btn btn-primary" href="../index.html">返回</a type="button">
                             </div>
                         </form>
                     </div>
                 </div>
                 <!-- /.box -->
                 <div class="col-md-3"></div>
-                
+
             </section>
             <!-- /.content -->
         </div>

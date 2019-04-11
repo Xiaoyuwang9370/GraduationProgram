@@ -10,8 +10,8 @@ function submitClassroom($sClassroom)
     $VMPDB->query("set character_set_results=utf8"); 
 
     $sSql = "INSERT INTO Classroom_ID (Classroom) VALUES ('{$sClassroom}')";
-    $sSqlData = "INSERT INTO Classroom_Data (Classroom_ID) SELECT Classroom_ID FROM Classroom_ID WHERE Classroom='{$sClassroom}'";
-    $sSqlUpdateFlag = "UPDATE classroom_id,classroom_data SET Classroom_ID.Delete_Flag=0,classroom_data.Delete_Flag=0 WHERE classroom_id.Classroom='{$sClassroom}' AND classroom_data.Classroom_ID=classroom_id.Classroom_ID";
+    $sSqlData = "INSERT INTO Classroom_Data (Classroom) VALUES ('{$sClassroom}')";
+    $sSqlUpdateFlag = "UPDATE classroom_id,classroom_data SET Classroom_ID.Delete_Flag=0,classroom_data.Delete_Flag=0 WHERE classroom_id.Classroom='{$sClassroom}' AND classroom_data.Classroom='{$sClassroom}'";
 
     $bInsertDone = $VMPDB->query($sSql);
 

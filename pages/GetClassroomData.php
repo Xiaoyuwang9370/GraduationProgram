@@ -1,11 +1,11 @@
 <?php include_once "Common.php"; ?>
 <?php
-function getClassroomData($sClassroomID)
+function getClassroomData($sClassroom)
 {   
     // 创建连接
     $VMPDB = connectDB("localhost", "root", "123", "crsdatabase", "utf8");
     
-    $oResult = $VMPDB->query("SELECT * FROM classroom_data WHERE Delete_Flag = 0 AND Classroom_ID='{$sClassroomID}'");
+    $oResult = $VMPDB->query("SELECT * FROM classroom_data WHERE Delete_Flag = 0 AND Classroom='{$sClassroom}'");
 
     $oClassroomData = array();
    
@@ -18,9 +18,9 @@ function getClassroomData($sClassroomID)
     echo json_encode($oClassroomData);
 }
 
-if (isset($_GET["ClassroomID"]))
+if (isset($_GET["Classroom"]))
 {
-    getClassroomData($_GET["ClassroomID"]);
+    getClassroomData($_GET["Classroom"]);
 }
 
 ?>

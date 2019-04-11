@@ -6,7 +6,7 @@ function deleteClassroom(sButtonName) {
     $.ajax({
         type: "post",
         url: "QueryCRSDB.php",
-        data: {"SqlScript":"UPDATE classroom_id,classroom_data SET classroom_id.Delete_Flag=1,classroom_data.Delete_Flag=1 WHERE classroom_id.Classroom='" + sButtonName + "' AND classroom_data.Classroom_ID=classroom_id.Classroom_ID"},
+        data: {"SqlScript":"UPDATE classroom_id,classroom_data SET classroom_id.Delete_Flag=1,classroom_data.Delete_Flag=1 WHERE classroom_id.Classroom='" + sButtonName + "' AND classroom_data.Classroom='" + sButtonName + "'"},
         success: function (result) {
             alert(sButtonName + "教室删除成功！");
             window.location.reload();

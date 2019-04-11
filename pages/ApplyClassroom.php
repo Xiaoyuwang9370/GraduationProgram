@@ -4,32 +4,35 @@ function ApplyClassroom()
 {   
     $sClassroom = $_POST["Classroom"];
     $sDate = $_POST["Date"];
-    $sLesson = "Lesson" + $_POST["Lesson"];
+    if ($_POST["Lesson"] == "晚自习")
+    {
+        $sLesson = "LessonNight";
+    }
+    else
+    {
+        $sLesson = "Lesson" . $_POST["Lesson"];
+    }
+    $sApplyName = $_POST["ApplyName"];
     $sCollege = $_POST["College"];
     $sSubject = $_POST["Subject"];
     $sName = $_POST["Name"];
-    echo $sClassroom;
-    echo $sDate;
-    echo $_POST["Lesson"];
     
     $VMPDB = connectDB("localhost", "root", "123", "crsdatabase", "utf8");
     
-    $sInsertToData = $VMPDB->query("INSERT INTO Classroom_Data (Classroom_ID) SELECT Classroom_ID FROM Classroom_ID WHERE Classroom='{$sClassroom}'");
-
-    $oResult = $VMPDB->query("UPDATE classroom_data,classroom_id SET classroom_id.Status_ID=1, classroom_data.Status_ID=1, classroom_data.Classroom_ID=classroom_id.Classroom_ID, classroom_data.Date='{$sDate}', classroom_data.'{$sLesson}'=1, classroom_data.College='{$sCollege}', classroom_data.Subject='{$sSubject}', classroom_data.User_Name='{$sName}' WHERE classroom_data.Classroom_ID=classroom_id.Classroom_ID AND classroom_id.Classroom='{$sClassroom}'");
-    
+    $bInsertDone = $VMPDB->query("INSERT INTO Classroom_Data (Classroom,Date) VALUES ('{$sClassroom}','{$sDate}')");
+    $sUpdateID = $VMPDB->query("UPDATE classroom_id SET Status_ID=1 WHERE Classroom='{$sClassroom}'");
+    $oResult = $VMPDB->query("UPDATE classroom_data SET {$sLesson}=1, College='{$sCollege}', Subject='{$sSubject}', User_Name='{$sName}', Apply_Name='{$sApplyName}', Status_ID=1 WHERE Classroom='{$sClassroom}' AND Date='{$sDate}'");
     $nUpdateRows = mysqli_affected_rows($VMPDB);
-    echo $nUpdateRows;
-    if ($nUpdateRows == 2 || $nUpdateRows == 1)
+    
+    if ($nUpdateRows == 1)
     {
         echo "<script>alert('预约教室成功！');</script>";
-        // echo "<script>location.href = '../index.html';</script>";
+        echo "<script>location.href = '../index.html';</script>";
     }
-
     else
     {
         echo "<script>alert(\"教室已经被预约！\")</script>";
-        // echo "<script>location.href = '../index.html';</script>";
+        echo "<script>location.href = '../index.html';</script>";
     }
 
     $VMPDB->close();

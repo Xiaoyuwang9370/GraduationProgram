@@ -111,7 +111,7 @@ function getClasssroomData(oClassroomList, sSelectedClassroomID, sSelectedClassr
         type: "get",
         url: "pages/GetClassroomData.php",
         data: {
-            "ClassroomID":sSelectedClassroomID
+            "Classroom":sSelectedClassroom
         },
         dataType: "json",
         success: function (result) {
