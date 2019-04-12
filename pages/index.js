@@ -34,14 +34,7 @@ function getDayName(day) {
     return weekday[day];
 }
 
-function generateTbody(oClassroomList, oClassroomInfo, sSelectedClassroomID, sSelectedClassroom) {
-    let nStatusID = 0;
-    for (let i = 0; i < oClassroomList.length; i++) {
-        if (oClassroomList[i].Classroom_ID == sSelectedClassroomID) {
-            nStatusID = parseInt(oClassroomList[i].Status_ID);
-        }
-    }
-
+function generateTbody(oClassroomInfo, sSelectedClassroomID, sSelectedClassroom) {
     // d是当前星期一的日期对象
     let d = getMonDate();
     for (let i = 0; i < 14; i++) {
@@ -50,52 +43,41 @@ function generateTbody(oClassroomList, oClassroomInfo, sSelectedClassroomID, sSe
         sWeek = getDayName(d.getDay());
         let sDateTd = "<td value=" + sDate + ">" + sDate + "</td>";
         let sWeekTd = "<td>" + sWeek + "</td>";
-        let sStatus1_2= "<a href='pages/ApplyClassroom.html?ApplyInfo=" + sSelectedClassroom + "," + sDate + "," + "1_2" + "'>预约</a>";
-        let sStatus3_4 = "<a href='pages/ApplyClassroom.html?ApplyInfo=" + sSelectedClassroom + "," + sDate + "," + "3_4" + "'>预约</a>";
-        let sStatus5_6 = "<a href='pages/ApplyClassroom.html?ApplyInfo=" + sSelectedClassroom + "," + sDate + "," + "5_6" + "'>预约</a>";
-        let sStatus7_8 = "<a href='pages/ApplyClassroom.html?ApplyInfo=" + sSelectedClassroom + "," + sDate + "," + "7_8" + "'>预约</a>";
+
+        let sStatus1_2 = "<a href='pages/ApplyClassroom.html?ApplyInfo=" + sSelectedClassroom + "," + sDate + "," + "1-2" + "'>预约</a>";
+        let sStatus3_4 = "<a href='pages/ApplyClassroom.html?ApplyInfo=" + sSelectedClassroom + "," + sDate + "," + "3-4" + "'>预约</a>";
+        let sStatus5_6 = "<a href='pages/ApplyClassroom.html?ApplyInfo=" + sSelectedClassroom + "," + sDate + "," + "5-6" + "'>预约</a>";
+        let sStatus7_8 = "<a href='pages/ApplyClassroom.html?ApplyInfo=" + sSelectedClassroom + "," + sDate + "," + "7-8" + "'>预约</a>";
         let sStatus_Night = "<a href='pages/ApplyClassroom.html?ApplyInfo=" + sSelectedClassroom + "," + sDate + "," + "night" + "'>预约</a>";
 
-        if (nStatusID == 1) {
-            for (let j = 0; j < oClassroomInfo.length; j++) {
-                let nLesson1_2 = oClassroomInfo[j].Lesson1_2;
-                let nLesson3_4 = oClassroomInfo[j].Lesson3_4;
-                let nLesson5_6 = oClassroomInfo[j].Lesson5_6;
-                let nLesson7_8 = oClassroomInfo[j].Lesson7_8;
-                let nLesson_Night = oClassroomInfo[j].LessonNight;
+        for (let j = 0; j < oClassroomInfo.length; j++) {
+            let sLesson = oClassroomInfo[j].Lesson;
 
-                if (oClassroomInfo[j].Status_ID == 1 && oClassroomInfo[j].Date == sDate)
-                {
-                    if (nLesson1_2 == 1)
-                    {
-                        sStatus1_2 = "<span class='college'>" + oClassroomInfo[j].College + "</span><br><span class='subject'>" + oClassroomInfo[j].Subject + "</span><br><span class='name'>主讲人：" + oClassroomInfo[j].User_Name + "</span>";
-                    }
-                    
-                    if (nLesson3_4 == 1)
-                    {
-                        sStatus3_4 = "<span class='college'>" + oClassroomInfo[j].College + "</span><br><span class='subject'>" + oClassroomInfo[j].Subject + "</span><br><span class='name'>主讲人：" + oClassroomInfo[j].User_Name + "</span>";
-                    }
-
-                    if (nLesson5_6 == 1)
-                    {
-                        sStatus5_6 = "<span class='college'>" + oClassroomInfo[j].College + "</span><br><span class='subject'>" + oClassroomInfo[j].Subject + "</span><br><span class='name'>主讲人：" + oClassroomInfo[j].User_Name + "</span>";
-                    }
-
-                    if (nLesson7_8 == 1)
-                    {
-                        sStatus7_8 = "<span class='college'>" + oClassroomInfo[j].College + "</span><br><span class='subject'>" + oClassroomInfo[j].Subject + "</span><br><span class='name'>主讲人：" + oClassroomInfo[j].User_Name + "</span>";
-                    }
-
-                    if (nLesson_Night == 1)
-                    {
-                        sStatus_Night = "<span class='college'>" + oClassroomInfo[j].College + "</span><br><span class='subject'>" + oClassroomInfo[j].Subject + "</span><br><span class='name'>主讲人：" + oClassroomInfo[j].User_Name + "</span>";
-                    }
-                                        
+            if (oClassroomInfo[j].Status_ID == 1 && oClassroomInfo[j].Date == sDate) {
+                if (sLesson == "1-2节") {
+                    sStatus1_2 = "<span class='college'>" + oClassroomInfo[j].College + "</span><br><span class='subject'>" + oClassroomInfo[j].Subject + "</span><br><span class='name'>主讲人：" + oClassroomInfo[j].User_Name + "</span>";
                 }
-                
+
+                if (sLesson == "3-4节") {
+                    sStatus3_4 = "<span class='college'>" + oClassroomInfo[j].College + "</span><br><span class='subject'>" + oClassroomInfo[j].Subject + "</span><br><span class='name'>主讲人：" + oClassroomInfo[j].User_Name + "</span>";
+                }
+
+                if (sLesson == "5-6节") {
+                    sStatus5_6 = "<span class='college'>" + oClassroomInfo[j].College + "</span><br><span class='subject'>" + oClassroomInfo[j].Subject + "</span><br><span class='name'>主讲人：" + oClassroomInfo[j].User_Name + "</span>";
+                }
+
+                if (sLesson == "7-8节") {
+                    sStatus7_8 = "<span class='college'>" + oClassroomInfo[j].College + "</span><br><span class='subject'>" + oClassroomInfo[j].Subject + "</span><br><span class='name'>主讲人：" + oClassroomInfo[j].User_Name + "</span>";
+                }
+
+                if (sLesson == "晚自习") {
+                    sStatus_Night = "<span class='college'>" + oClassroomInfo[j].College + "</span><br><span class='subject'>" + oClassroomInfo[j].Subject + "</span><br><span class='name'>主讲人：" + oClassroomInfo[j].User_Name + "</span>";
+                }
+
             }
         }
-        
+
+
         let sStatusTd_1 = "<td class='status' id='" + sDate + "_1-2'>" + sStatus1_2 + "</td>";
         let sStatusTd_2 = "<td class='status' id='" + sDate + "_3-4'>" + sStatus3_4 + "</td>";
         let sStatusTd_3 = "<td class='status' id='" + sDate + "_5-6'>" + sStatus5_6 + "</td>";
@@ -106,16 +88,16 @@ function generateTbody(oClassroomList, oClassroomInfo, sSelectedClassroomID, sSe
     }
 }
 
-function getClasssroomData(oClassroomList, sSelectedClassroomID, sSelectedClassroom) {
+function getClasssroomData(sSelectedClassroomID, sSelectedClassroom) {
     $.ajax({
         type: "get",
         url: "pages/GetClassroomData.php",
         data: {
-            "Classroom":sSelectedClassroom
+            "Classroom": sSelectedClassroom
         },
         dataType: "json",
         success: function (result) {
-            generateTbody(oClassroomList, result, sSelectedClassroomID, sSelectedClassroom);
+            generateTbody(result, sSelectedClassroomID, sSelectedClassroom);
         },
         error: function (oErrorMSG) {
             console.log(oErrorMSG);
@@ -147,7 +129,7 @@ function generateOptionList(oClassroomList, ClassroomID) {
     $("#classroomList").append(sOptionList);
     let sSelectedClassroom = $("#classroomList option:selected").text();
     $(".classroom").html(sSelectedClassroom);
-    getClasssroomData(oClassroomList, sSelectedClassroomID, sSelectedClassroom);
+    getClasssroomData(sSelectedClassroomID, sSelectedClassroom);
 
     $("#classroomList").change(function () {
         let sSelectedClassroomID = $("#classroomList option:selected").val();
@@ -174,9 +156,9 @@ function generateOptionList(oClassroomList, ClassroomID) {
         $("#classroomList").append(sOptionList);
         let sSelectedClassroom = $("#classroomList option:selected").text();
         $(".classroom").html(sSelectedClassroom);
-        getClasssroomData(oClassroomList, sSelectedClassroomID, sSelectedClassroom);
+        getClasssroomData(sSelectedClassroomID, sSelectedClassroom);
     });
-    
+
 }
 
 function getClasssroomList() {

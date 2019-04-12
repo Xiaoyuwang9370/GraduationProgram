@@ -18,6 +18,10 @@ function generateTitleInfo(oApplyInfo) {
     {
         sLesson = "晚自习";
     }
+    else
+    {
+        sLesson = sLesson + "节";
+    }
     
     $("#classroom").attr("value",sSelectedClassroom);
     $("#date").attr("value",sDate);
