@@ -89,9 +89,25 @@ function generateTbody(oClassroomData) {
         if (nStatusID == 1) {
             sStatus = "已预约";
         }
+
+        var dateTime = Date.parse(sDate);
+        var nowTime = Date.parse(new Date());
+        var sEditTd = "";
+        var sCancelTd = "";
+        if (dateTime > nowTime)
+        {
+            sEditTd = "<td><a href='EditClassroom.html?ApplyInfo=" + sClassroom + "," + sDate + "," + nLesson + "' class='btn btn-xs btn-primary'>修改</a></td>";
+            sCancelTd = "<td><a name='" + sClassroom + "," + sDate + "," + sLesson + "' class='btn btn-xs btn-danger delBtn'>取消</a></td>";
+        }
+        else
+        {
+            sEditTd = "<td><a href='EditClassroom.html?ApplyInfo=" + sClassroom + "," + sDate + "," + nLesson + "' class='btn btn-xs btn-primary disabled'>修改</a></td>";
+            sCancelTd = "<td><a name='" + sClassroom + "," + sDate + "," + sLesson + "' class='btn btn-xs btn-danger disabled delBtn'>取消</a></td>";
+            $(".delBtn").click(function(event) {
+                event.preventDefault();
+            });
+        }
         
-        let sEditTd = "<td><a href='EditClassroom.html?ApplyInfo=" + sClassroom + "," + sDate + "," + nLesson + "' class='btn btn-xs btn-primary'>修改</a></td>";
-        let sCancelTd = "<td><button name='" + sClassroom + "," + sDate + "," + sLesson + "' class='btn btn-xs btn-danger delBtn'>取消</button></td>";
         let sTr = "<tr><td>" + sClassroom + "</td><td>" + sDate + "</td><td>" + sWeek + "</td><td>" + sLesson + "</td><td>" + sCollege + "</td><td>" + sSubject + "</td><td>" + sName + "</td><td>" + sApplyName + "</td><td>" + sStatus + "</td>" + sEditTd + sCancelTd + "</tr>";
         $("#tbody").append(sTr);
     }

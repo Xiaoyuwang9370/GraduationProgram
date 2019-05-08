@@ -53,7 +53,16 @@
                 <div class="box box-info">
                     <div class="box-header">
                         <h3 class="box-title">编辑用户</h3>
+                        <div class="input-group col-md-2 pull-right">
+                            <input type="text" name="q" id="SeachInput" class="form-control" placeholder="搜索...">
+                            <span class="input-group-btn">
+                                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i
+                                        class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
                     </div>
+
                     <!-- /.box-header -->
                     <div class="box-body no-padding">
                         <form id="ManageUserForm" action="SubmitManageUser.php" method="post"

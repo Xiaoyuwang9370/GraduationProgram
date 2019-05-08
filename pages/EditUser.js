@@ -77,3 +77,34 @@ function GetUserInfo() {
 
 GetUserInfo();
 
+function searchBox()
+{
+	$("#SeachInput").change(function () {
+        var searchText = $(this).val();//获取输入的搜索内容
+        var searchTr = "";//预备对象，用于存储匹配出的tr
+
+		if (searchText != "")
+		{
+
+          //获取所有匹配的tr
+          searchTr = $("#tbody").find('td:contains('+ searchText +')').parent();
+          //将内容清空
+          $("#tbody").html("");
+        }
+        
+        //将获取的元素追加到列表中
+        $("#tbody").html(searchTr).clone();
+
+        //判断搜索内容是否有效，若无效，输出not find
+        if (searchTr.length <= 0) {
+          $("#tbody").html("<tr>未找到匹配项</tr>")
+        }
+      })
+
+      $("#SeachInput").click(function () {
+        $("searchText").change();
+      })
+}
+
+searchBox();
+
