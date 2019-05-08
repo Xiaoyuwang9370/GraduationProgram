@@ -1,6 +1,7 @@
 var sUser = getCookie("CRS_User");
 var sUserName = getCookie("CRS_User_Name");
 var sUserType = getCookie("CRS_User_Type");
+var sPhone = getCookie("CRS_Phone");
 var sCollege = getCookie("CRS_College");
 
 function getCookie(sCookieName) {
@@ -36,9 +37,8 @@ function setCookie(sName, sValue, nExpireDays) {
     document.cookie = sName + "=" + sValue + sExpireDays + ";path=/";
 }
 
-function checkUser(sUser, sUserName, nUserType, sCollege) {
+function checkUser(sUser, sUserName, nUserType, nPhone, sCollege) {
     var sUserType = "";
-
     if (nUserType == 1) {
         sUserType = "管理员";
     }
@@ -52,11 +52,22 @@ function checkUser(sUser, sUserName, nUserType, sCollege) {
         sUserType = "游客";
     }
 
+    var sPhone = "";
+    if (nPhone == 0)
+    {
+        sPhone = "无";
+    }
+    else
+    {
+        sPhone = nPhone;
+    }
+    
     if (sUserName != null && nUserType != null) {
         $("#LoginButton").html(sUserName);
         $(".User").html(sUser);
         $(".UserName").prepend(sUserName);
         $(".UserType").html(sUserType);
+        $(".Phone").html(sPhone);
         $(".College").html(sCollege);
     }
     else {
@@ -71,6 +82,7 @@ function doLogout() {
         setCookie("CRS_User", "", -1);
         setCookie("CRS_User_Name", "", -1);
         setCookie("CRS_User_Type", "", -1);
+        setCookie("CRS_Phone", "", -1);
         setCookie("CRS_College", "", -1);
         location.href = "/CRSystem/Pages/Login.php";
     }

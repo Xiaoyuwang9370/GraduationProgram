@@ -1,5 +1,5 @@
 //检查权限
-checkUser(sUser, sUserName, sUserType, sCollege);
+checkUser(sUser, sUserName, sUserType, sPhone, sCollege);
 checkPermission(Number(sUserType));
 if (sUserType > 3) {
     location.href = "/CRSystem/pages/Login.php";

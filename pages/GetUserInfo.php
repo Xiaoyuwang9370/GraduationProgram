@@ -2,51 +2,51 @@
 <?php
 function getUserName($VMPDB_Name)
 {
-	$oResult = $VMPDB_Name->query("SELECT user.User_ID,user.Name,user.User_Name,user_type.Type_ID,user.College FROM user,user_type WHERE user.Type=user_type.Name");
+	$oResult = $VMPDB_Name->query("SELECT user.User_ID,user.Name,user.User_Name,user_type.Type_ID,user.Phone,user.College FROM user,user_type WHERE user.Type=user_type.Name");
 
-    $sUserName = array();
+    $oUserName = array();
     while ($oRow = $oResult->fetch_assoc())
     {
-        $sUserName[] = $oRow;
+        $oUserName[] = $oRow;
     }
-    return $sUserName;
+    return $oUserName;
 }
 
 function getUserInfo()
 {
 	// 创建连接
     $VMPDB_Name = connectDB("localhost", "root", "123", "crsdatabase", "utf8");
-    $sUserName = getUserName($VMPDB_Name);
+    $oUserInfo = getUserName($VMPDB_Name);
     // Check connection
     if ($VMPDB_Name->connect_error) {
         die("连接失败: " . $VMPDB_Name->connect_error);
     } 
     $VMPDB_Name->close();
-    return $sUserName;
+    return $oUserInfo;
 }
 
 function getUserTypeList($VMPDB)
 {
     $oResult = $VMPDB->query("SELECT * FROM User_Type");
-    $sUserTypeList = array();
+    $oUserTypeList = array();
     while ($oRow = $oResult->fetch_assoc())
     {
-        $sUserTypeList[] = $oRow;
+        $oUserTypeList[] = $oRow;
     }
-    return $sUserTypeList;
+    return $oUserTypeList;
 }
 
 function getUserTypeInfo()
 {
 	// 创建连接
     $VMPDB = connectDB("localhost", "root", "123", "crsdatabase", "utf8");
-    $sUserTypeList = getUserTypeList($VMPDB);
+    $oUserTypeInfo = getUserTypeList($VMPDB);
     // Check connection
     if ($VMPDB->connect_error) {
         die("连接失败: " . $VMPDB->connect_error);
     } 
     $VMPDB->close();
-    return $sUserTypeList;
+    return $oUserTypeInfo;
 }
 
 $sResult = array();

@@ -30,7 +30,7 @@ function login()
     
     $sPassword = md5($sPassword);
 
-    $oResult = $VMPDB->query("SELECT user.Name,user.User_Name,user_type.Type_ID,user.College,user.Password FROM user,user_type WHERE user.Name='${sName}' AND user.Type=user_type.Name");
+    $oResult = $VMPDB->query("SELECT user.Name,user.User_Name,user_type.Type_ID,user.College,user.Phone,user.Password FROM user,user_type WHERE user.Name='${sName}' AND user.Type=user_type.Name");
     if ($oResult && $oUser = $oResult->fetch_assoc())
     {
         if ($oUser['Password'] != $sPassword)
@@ -44,6 +44,7 @@ function login()
                 echo "setCookie(\"CRS_User\", \"${sName}\", 14);" . PHP_EOL;
                 echo "setCookie(\"CRS_User_Name\", \"" . $oUser['User_Name'] . "\", 14);" . PHP_EOL;
                 echo "setCookie(\"CRS_User_Type\", \"" . $oUser['Type_ID'] . "\", 14);" . PHP_EOL;
+                echo "setCookie(\"CRS_Phone\", \"" . $oUser['Phone'] . "\", 14);" . PHP_EOL;
                 echo "setCookie(\"CRS_College\", \"" . $oUser['College'] . "\", 14);" . PHP_EOL;
             }
             else
@@ -51,6 +52,7 @@ function login()
                 echo "setCookie(\"CRS_User\", \"${sName}\", 0);" . PHP_EOL;
                 echo "setCookie(\"CRS_User_Name\", \"" . $oUser['User_Name'] . "\", 0);" . PHP_EOL;
                 echo "setCookie(\"CRS_User_Type\", \"" . $oUser['Type_ID'] . "\", 0);" . PHP_EOL;
+                echo "setCookie(\"CRS_Phone\", \"" . $oUser['Phone'] . "\", 0);" . PHP_EOL;
                 echo "setCookie(\"CRS_College\", \"" . $oUser['College'] . "\", 0);" . PHP_EOL;
             }
             echo "window.location.href='../index.html'";

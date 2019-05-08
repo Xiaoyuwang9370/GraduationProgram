@@ -4,6 +4,7 @@ function register()
     $sName = $_POST["Name"];
     $sUserName = $_POST["UserName"];
     $sType = $_POST["Type"];
+    $sPhone = $_POST["Phone"];
     $sCollege = $_POST["College"];
     $sPassword = "123456";
     
@@ -17,8 +18,8 @@ function register()
     
     $sPassword = md5($sPassword);
 
-    $sSql = "INSERT INTO User (Name, User_Name, Type, College, Password) 
-             VALUES ('{$sName}', '{$sUserName}','{$sType}' ,'{$sCollege}', '{$sPassword}')";
+    $sSql = "INSERT INTO User (Name, User_Name, Type, Phone, College, Password) 
+             VALUES ('{$sName}', '{$sUserName}', '{$sType}', '{$sPhone}', '{$sCollege}', '{$sPassword}')";
 
     $bInsertDone = $VMPDB->query($sSql);
     
