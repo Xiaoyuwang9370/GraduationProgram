@@ -55,7 +55,16 @@ function login()
                 echo "setCookie(\"CRS_Phone\", \"" . $oUser['Phone'] . "\", 0);" . PHP_EOL;
                 echo "setCookie(\"CRS_College\", \"" . $oUser['College'] . "\", 0);" . PHP_EOL;
             }
-            echo "window.location.href='../index.html'";
+
+            if ($oUser['Type_ID'] == 1)
+            {
+                echo "window.location.href='../pages/ApplyManage.html';";
+            }
+            else
+            {
+                echo "window.location.href='../index.html'";
+            }
+            
         }
     }
     else

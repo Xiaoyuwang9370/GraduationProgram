@@ -5,6 +5,11 @@ if (sUserType > 3) {
     location.href = "/CRSystem/pages/Login.php";
 }
 
+if (sUserType == 1)
+{
+    $(".sidebar-menu li:lt(4)").remove();
+}
+
 function timestampToDate(timestamp) {
     var time = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
     var y = time.getFullYear();
