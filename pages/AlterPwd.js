@@ -10,9 +10,9 @@ function alter()
     var sOldPwd = $("#OldPwd").val();
     var sNewPwd = $("#NewPwd").val();
     var sCheck = $("#Check").val();
-    var regex=/^[/s]+$/; //声明一个判断用户名前后是否有空格的正则表达式 
+    var regex=/^[/s]+$/; 
     
-    if (regex.test(sUserName))//判断用户名前后是否有空格
+    if (regex.test(sUserName))
     {
         alert("用户名格式不对！");
         return false;

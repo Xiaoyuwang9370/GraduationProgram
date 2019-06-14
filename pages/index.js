@@ -82,7 +82,6 @@ function generateTbody(oClassroomInfo, sSelectedClassroomID, sSelectedClassroom)
             }
         }
 
-
         let sStatusTd_1 = "<td class='status' id='" + sDate + "_1-2'>" + sStatus1_2 + "</td>";
         let sStatusTd_2 = "<td class='status' id='" + sDate + "_3-4'>" + sStatus3_4 + "</td>";
         let sStatusTd_3 = "<td class='status' id='" + sDate + "_5-6'>" + sStatus5_6 + "</td>";
@@ -156,14 +155,12 @@ function generateOptionList(oClassroomList, ClassroomID) {
             else {
                 sOptionList += "<option value='" + sClassroomID + "'>" + sClassroom + "</option>";
             }
-
         }
         $("#classroomList").append(sOptionList);
         let sSelectedClassroom = $("#classroomList option:selected").text();
         $(".classroom").html(sSelectedClassroom);
         getClasssroomData(sSelectedClassroomID, sSelectedClassroom);
     });
-
 }
 
 function getClasssroomList() {

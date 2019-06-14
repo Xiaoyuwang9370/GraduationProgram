@@ -34,8 +34,7 @@ function submitClassroom($sClassroom)
         {
             echo "<script>alert(\"导入失败,教室名已存在\")</script>";
             echo "<script>window.location.href = \"ClassroomManage.html\" </script>";
-        }
-        
+        }     
     }
 }
 
