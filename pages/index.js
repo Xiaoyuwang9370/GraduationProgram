@@ -49,11 +49,11 @@ function generateTbody(oClassroomInfo, sSelectedClassroomID, sSelectedClassroom)
         let sDateTd = "<td value=" + sDate + ">" + sDate + "</td>";
         let sWeekTd = "<td>" + sWeek + "</td>";
 
-        let sStatus1_2 = "<a href='pages/ApplyClassroom.html?ApplyInfo=" + sSelectedClassroom + "," + sDate + "," + "1-2" + "'>预约</a>";
-        let sStatus3_4 = "<a href='pages/ApplyClassroom.html?ApplyInfo=" + sSelectedClassroom + "," + sDate + "," + "3-4" + "'>预约</a>";
-        let sStatus5_6 = "<a href='pages/ApplyClassroom.html?ApplyInfo=" + sSelectedClassroom + "," + sDate + "," + "5-6" + "'>预约</a>";
-        let sStatus7_8 = "<a href='pages/ApplyClassroom.html?ApplyInfo=" + sSelectedClassroom + "," + sDate + "," + "7-8" + "'>预约</a>";
-        let sStatus_Night = "<a href='pages/ApplyClassroom.html?ApplyInfo=" + sSelectedClassroom + "," + sDate + "," + "night" + "'>预约</a>";
+        let sStatus1_2 = "<a class='reservation' href='pages/ApplyClassroom.html?ApplyInfo=" + sSelectedClassroom + "," + sDate + "," + "1-2" + "'>预约</a>";
+        let sStatus3_4 = "<a class='reservation' href='pages/ApplyClassroom.html?ApplyInfo=" + sSelectedClassroom + "," + sDate + "," + "3-4" + "'>预约</a>";
+        let sStatus5_6 = "<a class='reservation' href='pages/ApplyClassroom.html?ApplyInfo=" + sSelectedClassroom + "," + sDate + "," + "5-6" + "'>预约</a>";
+        let sStatus7_8 = "<a class='reservation' href='pages/ApplyClassroom.html?ApplyInfo=" + sSelectedClassroom + "," + sDate + "," + "7-8" + "'>预约</a>";
+        let sStatus_Night = "<a class='reservation' href='pages/ApplyClassroom.html?ApplyInfo=" + sSelectedClassroom + "," + sDate + "," + "night" + "'>预约</a>";
 
         for (let j = 0; j < oClassroomInfo.length; j++) {
             let sLesson = oClassroomInfo[j].Lesson;
@@ -90,6 +90,11 @@ function generateTbody(oClassroomInfo, sSelectedClassroomID, sSelectedClassroom)
         let sTr = "<tr>" + sDateTd + sWeekTd + sStatusTd_1 + sStatusTd_2 + sStatusTd_3 + sStatusTd_4 + sStatusTd_5 + "</tr>";
         $("#tbody").append(sTr);
     }
+    
+    if (sUserType > 2) {
+        $(".reservation").attr("href","javascript:void(0)");
+    }
+    
 }
 
 function getClasssroomData(sSelectedClassroomID, sSelectedClassroom) {
